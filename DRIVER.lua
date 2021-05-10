@@ -9804,15 +9804,25 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
 if text == 'كشف' and tonumber(msg.reply_to_message_id_) > 0 then
-function start_function(extra, result, success)
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
-local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
-local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'Vc33h')..')'
-local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*⌯︙الايدي -› ('..iduser..')*\n*⌯︙الاسم -› (*'..username..')\n*⌯︙الرتبه -› ('..rtp..')*\n*⌯︙نوع الكشف -› بالرد*')
-end,nil)
+function Function_v(extra, result, success)
+if result.id_ then
+tdcli_function({ID = "GetUser",user_id_ = result.id_}, function(arg, data)
+if data.username_ then
+UserName_User = '@' .. data.username_
+else
+UserName_User = 'لا يوجد'
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
+local Id = data.id_
+local frLsn = data.first_name_..' '..(data.last_name_ or "")
+ local Status_Gps = Rutba(Id,msg.chat_id_)
+send(msg.chat_id_, msg.id_, '\n*⌯︙الاسم -› ('..frLsn..')\n⌯︙الايدي -› '..Id..'\n⌯︙المعرف -› *['..UserName_User..']*\n⌯︙الرتبة -› '..Status_Gps..'\n⌯︙نوع الكشف - بالمعرف*')
+end, nil)
+else
+send(msg.chat_id_, msg.id_, ' *⌯︙لا يوجد حساب بهاذا المعرف*')
+end
+end
+tdcli_function({ID = "SearchPublicChat",username_ = username}, Function_v, nil)
+return false
 end
 if text and text:match("^كشف @(.*)$") then
 local username = text:match("^كشف @(.*)$")
@@ -10867,7 +10877,7 @@ database:set(bot_id.."AutoFile:Time",os.date("%x"))
 end
 end
 if text == "غنيلي" and not database:get(bot_id.."sing:for:me"..msg.chat_id_) then
-data,res = https.request('https://vvvzvv.ml/amirVois/DRIVER.php')
+data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
 if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then

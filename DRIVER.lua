@@ -5122,7 +5122,7 @@ send(msg.chat_id_, msg.id_, '⌯︙تم مسح المنظفين')
 end
 if text == ("المنظفين") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'NNUUU:MN:TF'..msg.chat_id_)
-t = "\n⌯︙قائمة المنظفين \n≪━━━━━━𝓓𝓡𝓖━━━━━━≫\n"
+t = "\n⌯︙قائمة المنظفين \n•━━━━━━ 𝘋𝘳 ━━━━━━━•\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5138,7 +5138,7 @@ send(msg.chat_id_, msg.id_, t)
 end
 if text == ("تاك للمنظفين") or text == ("صيح المنظفين") then
 local list = database:smembers(bot_id..'NNUUU:MN:TF'..msg.chat_id_)
-t = "\n⌯︙وينكم تعالو يريدوكم بالكروب \n≪━━━━━━𝓓𝓡𝓖━━━━━━≫\n"
+t = "\n⌯︙وينكم تعالو يريدوكم بالكروب \n•━━━━━━ 𝘋𝘳 ━━━━━━━•\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then

@@ -2208,7 +2208,7 @@ send(msg.chat_id_, msg.id_,' *⌯︙تم تعيين عدد الاعضاء سيت
 end
 if text == 'تحديث السورس' and DevDRIVERW(msg) then 
 os.execute('rm -rf DRIVER.lua')
-os.execute('wget https://raw.githubusercontent.com/DRIVERTEAM/DRIVER/main/DRIVER.lua)
+os.execute('wget https://raw.githubusercontent.com/DRIVERTEAM/DRIVER/main/DRIVER.lua')
 send(msg.chat_id_, msg.id_,' *⌯︙تم تحديث السورس* \n*⌯︙لديك اخر اصدار لسورس درايفر*\n*⌯︙الاصدار -› { 2.8v}*')
 dofile('DRIVER.lua')  
 end

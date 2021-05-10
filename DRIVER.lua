@@ -10493,6 +10493,17 @@ end
 end
 end
 
+if text == 'نقل الاحصائيات' and DevDRIVERW(msg) then
+local Users = database:smembers(''..bot_id.."Num:User:Pv")
+local Groups = database:smembers(''..bot_id..'ChekBotAdd') 
+for i = 1, #Groups do
+database:sadd(bot_id..'Chek:Groups',Groups[i])  
+end
+for i = 1, #Users do
+database:sadd(bot_id..'User_Bot',Users[i])  
+end
+send(msg.chat_id_, msg.id_,'⌯︙تم نقل : '..#Groups..' كروب\n⌯︙تم نقل : '..#Users..' مشترك \n⌯︙من التحديث القديم الى التحديث الجديد')
+end
 
 if text and text:match("^تغير رد المطور (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد المطور (.*)$") 

@@ -2207,21 +2207,11 @@ database:set(bot_id..'Num:Add:Bot',Num)
 send(msg.chat_id_, msg.id_,' *⌯︙تم تعيين عدد الاعضاء سيتم تفعيل الكروبات التي اعضائها اكثر من  >> {'..Num..'} عضو*')
 end
 if text == 'تحديث السورس' and DevDRIVERW(msg) then 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'  *⌯︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⌯︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
 os.execute('rm -rf DRIVER.lua')
 os.execute('wget https://raw.githubusercontent.com/DRIVERTEAM/DRIVER/main/DRIVER.lua)
 send(msg.chat_id_, msg.id_,' *⌯︙تم تحديث السورس* \n*⌯︙لديك اخر اصدار لسورس درايفر*\n*⌯︙الاصدار -› { 2.8v}*')
 dofile('DRIVER.lua')  
 end
-
 if text and text:match("^تغير الاشتراك$") and DevDRIVERW(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, ' *⌯︙حسنآ ارسل لي معرف القناة*')

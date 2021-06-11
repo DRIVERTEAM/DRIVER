@@ -11190,14 +11190,14 @@ end
 send(msg.chat_id_, msg.id_,"*⌯︙تم مسح الميديا بنجاح*")
 end
 if text == "غنيلي" and not database:get(bot_id.."sing:for:me"..msg.chat_id_) then
-data,res = https.request('https://vvvzvv.ml/amirVois/DRIVER.php')
+data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
 if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then
 local Text ='*⌯︙تم اختيار المقطع الصوتي لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '𝘋𝘙𝘐𝘝𝘌𝘙 𝘛𝘌𝘈𝘔.',url="t.me/DRIVERTEAM"}},
+{{text = '𝘋𝘙𝘐𝘝𝘌𝘙 𝘛𝘌𝘈𝘔.',url="t.me/Vc33h"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))

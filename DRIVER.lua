@@ -16,7 +16,7 @@ print([[
 ]])
 io.popen("mkdir File_Bot") 
 io.popen("cd File_Bot && rm -rf commands.lua") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/DRIVERTEAM/Files_DRIVER/main/File_Bot/commands.lua") 
+io.popen("cd File_Bot && wget https://raw.githubusercontent.com/DRIVERTEAM/File_Bot/main/File_Bot/commands.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -787,7 +787,7 @@ local start = database:get(bot_id.."Start:Bot")
 if start then 
 SourceDRIVERr = start
 else
-Namot = (database:get(bot_id..'Name:Bot') or 'تيلاند')
+Namot = (database:get(bot_id..'Name:Bot') or 'درايفر')
 SourceDRIVERr = '*⌯︙اهلا عزيزي*\n*⌯︙انا بوت اسمي '..Namot..'*\n*⌯︙اختصاصي حمايه الكروبات*\n*⌯︙من تكرار والسبام والتوجيه والخ…*\n*⌯︙لتفعيلي اتبع الاخطوات…↓*\n*⌯︙اضفني الي مجموعتك وقم بترقيتي ادمن واكتب كلمه { تفعيل }  ويستطيع -›{ منشئ او المشرفين } بتفعيل فقط*\n⌯︙[قناة سورس البوت](http://t.me/Vc33h)'
 end
 send(msg.chat_id_, msg.id_, SourceDRIVERr) 
@@ -1083,12 +1083,12 @@ end
 if text == 'تحديث السورس ⌯' and DevDRIVERW(msg) then 
 os.execute('rm -rf DRIVER.lua')
 os.execute('wget https://raw.githubusercontent.com/DRIVERTEAM/DRIVER/main/DRIVER.lua')
-send(msg.chat_id_, msg.id_,' *⌯︙تم تحديث السورس* \n*⌯︙لديك اخر اصدار لسورس تيلاند*\n*⌯︙الاصدار -› { 2.8v}*')
+send(msg.chat_id_, msg.id_,' *⌯︙تم تحديث السورس* \n*⌯︙لديك اخر اصدار لسورس درايفر*\n*⌯︙الاصدار -› { 2.8v}*')
 dofile('DRIVER.lua')  
 end
 if text == 'الاصدار ⌯' and DevDRIVERW(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,' *⌯︙اصدار سورس تيلاند* \n*⌯︙الاصدار -›{ 2.8v}*')
+send(msg.chat_id_, msg.id_,' *⌯︙اصدار سورس درايفر* \n*⌯︙الاصدار -›{ 2.8v}*')
 end
 if text == 'قناه تحديثات البوت ⌯' and DevDRIVERW(msg) then 
 database:del(bot_id..'Srt:Bot') 
@@ -2379,7 +2379,7 @@ return false
 end
 os.execute('rm -rf DRIVER.lua')
 os.execute('wget https://raw.githubusercontent.com/DRIVERTEAM/DRIVER/main/DRIVER.lua')
-send(msg.chat_id_, msg.id_,' *⌯︙تم تحديث السورس* \n*⌯︙لديك اخر اصدار لسورس تيلاند*\n*⌯︙الاصدار -› { 2.8v}*')
+send(msg.chat_id_, msg.id_,' *⌯︙تم تحديث السورس* \n*⌯︙لديك اخر اصدار لسورس درايفر*\n*⌯︙الاصدار -› { 2.8v}*')
 dofile('DRIVER.lua')  
 end
 
@@ -4003,7 +4003,7 @@ end,nil)
 end
 
 if text == 'الملفات' and DevDRIVERW(msg) then
-t = ' *⌯︙ملفات السورس تيلاند ↓*\n*•━━━━━━ 𝘋𝘳 ━━━━━━━•* \n'
+t = ' *⌯︙ملفات السورس درايفر ↓*\n*•━━━━━━ 𝘋𝘳 ━━━━━━━•* \n'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
 if v:match(".lua$") then
@@ -4015,13 +4015,13 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if DevDRIVERW(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/DRIVERTEAM/Files_Driver/main/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/DRIVERTEAM/File_Bot/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
-local TextS = "\n *⌯︙اهلا بك في متجر ملفات تيلاند*\n*⌯︙ملفات السورس ↓*\n*•━━━━━━ 𝘋𝘳 ━━━━━━━•*\n\n"
-local TextE = "\n*•━━━━━━ 𝘋𝘳 ━━━━━━━•*\n *⌯︙علامة تعني { ✓ } ملف مفعل*\n *⌯︙علامة تعني { ✘ } ملف معطل*\n *⌯︙قناة سورس تيلاند ↓*\n".." *⌯︙*[اضغط هنا لدخول](t.me/Vc33h) \n"
+local TextS = "\n *⌯︙اهلا بك في متجر ملفات درايفر*\n*⌯︙ملفات السورس ↓*\n*•━━━━━━ 𝘋𝘳 ━━━━━━━•*\n\n"
+local TextE = "\n*•━━━━━━ 𝘋𝘳 ━━━━━━━•*\n *⌯︙علامة تعني { ✓ } ملف مفعل*\n *⌯︙علامة تعني { ✘ } ملف معطل*\n *⌯︙قناة سورس درايفر ↓*\n".." *⌯︙*[اضغط هنا لدخول](t.me/Vc33h) \n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
 local Check_File_is_Found = io.open("File_Bot/"..name,"r")
@@ -4059,7 +4059,7 @@ os.execute("rm -fr File_Bot/"..file)
 send(msg.chat_id_, msg.id_,t) 
 dofile('DRIVER.lua')  
 else
-send(msg.chat_id_, msg.id_," *⌯︙عذرا الملف لايدعم سورس تيلاند* \n") 
+send(msg.chat_id_, msg.id_," *⌯︙عذرا الملف لايدعم سورس درايفر* \n") 
 end
 return false
 end
@@ -4081,7 +4081,7 @@ chek:close()
 send(msg.chat_id_, msg.id_,t) 
 dofile('DRIVER.lua')  
 else
-send(msg.chat_id_, msg.id_," *⌯︙عذرا الملف لايدعم سورس تيلاند* \n") 
+send(msg.chat_id_, msg.id_," *⌯︙عذرا الملف لايدعم سورس درايفر* \n") 
 end
 return false
 end
@@ -8988,8 +8988,8 @@ end
 return false
 end
 
-if text == ""..(database:get(bot_id..'Name:Bot') or 'تيلاند').."" then  
-Namebot = (database:get(bot_id..'Name:Bot') or 'تيلاند')
+if text == ""..(database:get(bot_id..'Name:Bot') or 'درايفر').."" then  
+Namebot = (database:get(bot_id..'Name:Bot') or 'درايفر')
 local DRIVER_Msg = {
 'عمغي 🥺💕.',
 'هاا شتريد كافي ☹️.',
@@ -9818,7 +9818,7 @@ send(msg.chat_id_, msg.id_,texting[Textes])
 end
 end
 -------------------------------
-if text == ""..(database:get(bot_id..'Name:Bot') or 'تيلاند').." غادر" or text == 'غادر' then  
+if text == ""..(database:get(bot_id..'Name:Bot') or 'درايفر').." غادر" or text == 'غادر' then  
 if Sudo(msg) and not database:get(bot_id..'Left:Bot'..msg.chat_id_)  then 
 tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=bot_id,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
 send(msg.chat_id_, msg.id_,'*⌯︙تم مغادرة المجموعه*') 
@@ -9827,7 +9827,7 @@ end
 return false  
 end
 if text == 'بوت' then
-Namebot = (database:get(bot_id..'Name:Bot') or 'تيلاند')
+Namebot = (database:get(bot_id..'Name:Bot') or 'درايفر')
 send(msg.chat_id_, msg.id_,'*اسمي '..Namebot..'* ')
 end
 if text == 'الاحصائيات' then
@@ -12007,7 +12007,7 @@ if (text and text == "تفعيل اوامر التحشيش") then
 send(msg.chat_id_, msg.id_, '  *⌯︙تم تفعيل اوامر التحشيش*')
 database:del(bot_id.."Fun_Bots:"..msg.chat_id_)
 end
-local Name_Bot = (database:get(bot_id..'Name:Bot') or 'تيلاند')
+local Name_Bot = (database:get(bot_id..'Name:Bot') or 'درايفر')
 if not database:get(bot_id.."Fun_Bots:"..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then 
 function FunBot(extra, result, success) 

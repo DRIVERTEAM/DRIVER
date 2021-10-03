@@ -2753,6 +2753,29 @@ return false
 end
 GetFile_Bot(msg)
 end
+if text == 'تفعيل التكرار العام' and Mod(msg) and GetChannelMember(msg) then  
+database:del(bot_id..'antk'..msg.chat_id_) 
+send(msg.chat_id_, msg.id_,' *⌯︙تم تفعيل التكرار العام*') 
+return false  
+end
+if text == 'تعطيل التكرار العام' and Mod(msg) and GetChannelMember(msg) then  
+database:set(bot_id..'antk'..msg.chat_id_,true) 
+send(msg.chat_id_, msg.id_,' *⌯︙تم تعطيل التكرار العام*') 
+return false  
+end
+if not database:get(bot_id..'antk'..msg.chat_id_) then
+if msg.content_.animation_ then
+if database:get(bot_id.."animation:ban"..msg.chat_id_..":"..msg.sender_user_id_)== "5" then 
+https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_..'&until_date='..tonumber(msg.date_+3600))
+send(msg.chat_id_, msg.id_,"*⌯︙تم تقييدك  لمده ساعه بسبب التكرار*") 
+database:del(bot_id.."animation:ban"..msg.chat_id_..":"..msg.sender_user_id_)
+return false
+end
+local x = database:get(bot_id.."animation:ban"..msg.chat_id_..":"..msg.sender_user_id_) or 0
+x = x + 1 
+database:setex(bot_id.."animation:ban"..msg.chat_id_..":"..msg.sender_user_id_,5,x)
+end
+end  
 if text == 'الاوامر المضافه' and Constructor(msg) then
 local list = database:smembers(bot_id..'List:Cmd:Group:New'..msg.chat_id_..'')
 t = " ⌯︙قائمه الاوامر المضافه  \n*•━━━━━━ 𝐒𝐇 ━━━━━━━•*\n"
@@ -11623,7 +11646,7 @@ local Teext =[[
 *⌯~⪼ نسبه الكره*
 *⌯~⪼ نسبه الانوثه*
 *ٴ•━━━━━━ 𝐒𝐇 ━━━━━━━•*
-[⍆ 𝑆𝐻𝐴𝐴𝑅𝐴𝑊𝑌 𝑇𝐸𝐴𝑀](t.me/SPXXXk)
+[⍆ 𝑆𝐻𝐴𝐴𝑅𝐴??𝑌 𝑇𝐸𝐴𝑀](t.me/SPXXXk)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {

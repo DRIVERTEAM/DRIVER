@@ -2753,12 +2753,12 @@ return false
 end
 GetFile_Bot(msg)
 end
-if text == 'تفعيل التكرار العام' and Mod(msg) and GetChannelMember(msg) then  
+if text == 'تفعيل التكرار العام' and DevDRIVERW(msg) then 
 database:del(bot_id..'antk'..msg.chat_id_) 
 send(msg.chat_id_, msg.id_,' *⌯︙تم تفعيل التكرار العام*') 
 return false  
 end
-if text == 'تعطيل التكرار العام' and Mod(msg) and GetChannelMember(msg) then  
+if text == 'تعطيل التكرار العام' and DevDRIVERW(msg) then 
 database:set(bot_id..'antk'..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,' *⌯︙تم تعطيل التكرار العام*') 
 return false  

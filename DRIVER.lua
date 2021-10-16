@@ -9625,30 +9625,12 @@ database:srem(bot_id..'List:Manager'..msg.chat_id_..'', text)
 return false
 end
 end
-if text == "اضف رد" and Manager(msg) then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'  *⌯︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⌯︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+if text == "اضف رد" and Manager(msg) and GetChannelMember(msg) then   
 send(msg.chat_id_, msg.id_,"*⌯︙ارسل الكلمه التي تريد اضافتها*")
 database:set(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
 end
-if text == "حذف رد" and Manager(msg) then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'  *⌯︙عذࢪا عليڪ الاشتࢪاڪ في قناه البوت* \n*⌯︙اشتࢪڪ هنا عمࢪي* ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+if text == "حذف رد" and Manager(msg) and GetChannelMember(msg) then   
 send(msg.chat_id_, msg.id_,"*⌯︙ارسل الكلمه التي تريد حذفها*")
 database:set(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"true2")
 return false 
@@ -9658,12 +9640,10 @@ if database:get(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_
 send(msg.chat_id_, msg.id_, '*⌯︙الان ارسل الرد الذي تريد اضافته* \n*⌯︙قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )*\n*⌯︙يمكنك اضافه الى النص :*\n⌯︙`#username` > معرف المستخدم\n⌯︙`#msgs` > عدد رسائل المستخدم\n⌯︙`#name` > اسم المستخدم\n⌯︙`#id` > ايدي المستخدم\n⌯︙`#stast` > رتبه المستخدم \n⌯︙`#edit` > عدد السحكات ')
 database:set(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"true1")
 database:set(bot_id.."Text:Manager"..msg.sender_user_id_..":"..msg.chat_id_, text)
-database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
+
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
-database:del(bot_id.."Add:Rd:Manager:Stekrs"..text..msg.chat_id_) 
 database:del(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
-database:del(bot_id.."Add:Rd:Manager:Video"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 database:sadd(bot_id.."List:Manager"..msg.chat_id_.."", text)
@@ -9672,12 +9652,9 @@ end
 if text and text:match("^(.*)$") then
 if database:get(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_.."") == "true2" then
 send(msg.chat_id_, msg.id_,"*⌯︙تم ازالة الرد من قائمه الردود*")
-database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
-database:del(bot_id.."Add:Rd:Manager:Stekrs"..text..msg.chat_id_) 
 database:del(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
-database:del(bot_id.."Add:Rd:Manager:Video"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 database:del(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_)
@@ -9687,12 +9664,9 @@ end
 end
 if text and not database:get(bot_id.."Reply:Manager"..msg.chat_id_) then
 if not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
-local anemi = database:get(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
 local veico = database:get(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
-local stekr = database:get(bot_id.."Add:Rd:Manager:Stekrs"..text..msg.chat_id_) 
 local Text = database:get(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
 local photo = database:get(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
-local video = database:get(bot_id.."Add:Rd:Manager:Video"..text..msg.chat_id_)
 local document = database:get(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 local audio = database:get(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 if Text then 
@@ -9710,16 +9684,8 @@ send(msg.chat_id_, msg.id_,'['..Text..']')
 database:sadd(bot_id.."Spam:Texting"..msg.sender_user_id_,text) 
 end,nil)
 end
-if stekr then 
-sendSticker(msg.chat_id_, msg.id_, 0, 1, nil, stekr)   
-database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
-end
 if veico then 
 sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, veico)   
-database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
-end
-if video then 
-sendVideo(msg.chat_id_, msg.id_, 0, 1, nil,video)
 database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
 end
 if anemi then 
@@ -9739,6 +9705,14 @@ sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,photo,'')
 database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
 end  
 end
+end
+if text == ""..(database:get(bot_id..'Name:Bot') or 'اسد').." غادر" or text == 'غادر' then  
+if Sudo(msg) and not database:get(bot_id..'Left:Bot'..msg.chat_id_)  then 
+tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=bot_id,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
+send(msg.chat_id_, msg.id_,'*⌯︙تم مغادرة المجموعه*') 
+database:srem(bot_id..'Chek:Groups',msg.chat_id_)  
+end
+return false  
 end
 if text == ("الردود المتعدده") and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then

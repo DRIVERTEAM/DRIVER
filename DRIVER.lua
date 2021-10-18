@@ -9642,6 +9642,7 @@ database:set(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"t
 database:set(bot_id.."Text:Manager"..msg.sender_user_id_..":"..msg.chat_id_, text)
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
+database:del(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 database:sadd(bot_id.."List:Manager"..msg.chat_id_.."", text)
@@ -9652,6 +9653,7 @@ if database:get(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_
 send(msg.chat_id_, msg.id_,"*⌯︙تم ازالة الرد من قائمه الردود*")
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
+database:del(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 database:del(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_)
@@ -9663,6 +9665,7 @@ if text and not database:get(bot_id.."Reply:Manager"..msg.chat_id_) then
 if not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
 local veico = database:get(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 local Text = database:get(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
+local photo = database:get(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
 local document = database:get(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 local audio = database:get(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 if Text then 
@@ -9680,8 +9683,16 @@ send(msg.chat_id_, msg.id_,'['..Text..']')
 database:sadd(bot_id.."Spam:Texting"..msg.sender_user_id_,text) 
 end,nil)
 end
+if stekr then 
+sendSticker(msg.chat_id_, msg.id_, 0, 1, nil, stekr)   
+database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
+end
 if veico then 
 sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, veico)   
+database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
+end
+if video then 
+sendVideo(msg.chat_id_, msg.id_, 0, 1, nil,video)
 database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
 end
 if anemi then 
@@ -9696,6 +9707,10 @@ if audio then
 sendAudio(msg.chat_id_,msg.id_,audio)  
 database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
 end
+if photo then
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,photo,'')
+database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
+end  
 end
 end
 if text == ""..(database:get(bot_id..'Name:Bot') or 'اسد').." غادر" or text == 'غادر' then  
@@ -11650,7 +11665,7 @@ local Teext =[[
 *ٴ•━━━━━━ 𝐒𝐇 ━━━━━━━•*
 *⌯~⪼ رفع + تنزيل ← بقره*
 *⌯~⪼ تاك لبقرات*
-*ٴ•━━━━━━ 𝐒?? ━━━━━━━•*
+*ٴ•━━━━━━ 𝐒𝐇 ━━━━━━━•*
 *⌯~⪼ رفع + تنزيل ← حصان*
 *⌯~⪼ تاك لحصونه*
 *ٴ•━━━━━━ 𝐒𝐇 ━━━━━━━•*

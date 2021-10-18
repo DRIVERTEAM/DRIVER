@@ -9643,7 +9643,6 @@ database:set(bot_id.."Text:Manager"..msg.sender_user_id_..":"..msg.chat_id_, tex
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
-database:del(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 database:sadd(bot_id.."List:Manager"..msg.chat_id_.."", text)
 return false end
@@ -9654,7 +9653,6 @@ send(msg.chat_id_, msg.id_,"*⌯︙تم ازالة الرد من قائمه ال
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
-database:del(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 database:del(bot_id.."Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_)
 database:srem(bot_id.."List:Manager"..msg.chat_id_.."", text)
@@ -9666,7 +9664,6 @@ if not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
 local veico = database:get(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 local Text = database:get(bot_id.."Add:Rd:Manager:Text"..text..msg.chat_id_)   
 local photo = database:get(bot_id.."Add:Rd:Manager:Photo"..text..msg.chat_id_)
-local document = database:get(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 local audio = database:get(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 if Text then 
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,data)

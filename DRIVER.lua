@@ -558,12 +558,6 @@ download_to_file('https://api.telegram.org/file/bot'..token..'/'..eer.result.fil
 sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"@VVVZVV")  
 os.execute('rm -rf ./'..ffrr) 
 end
-function Addsticker(msg,chat,Sd,rre)
-local Qw = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..Sd)) 
-download_to_file('https://api.telegram.org/file/bot'..token..'/'..Qw.result.file_path,rre) 
-sendSticker(msg.chat_id_, msg.id_, 0, 1, nil, './'..rre)
-os.execute('rm -rf ./'..rre) 
-end
 function AddFile_Bot(msg,chat,ID_FILE,File_Name)
 if File_Name:match('.json') then
 if tonumber(File_Name:match('(%d+)')) ~= tonumber(bot_id) then 

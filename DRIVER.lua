@@ -2008,7 +2008,7 @@ DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 --------------------------------------------------------------------------------------------------------------
-if msg.forward_info_ and not Special(msg) then 
+if msg.forward_info_ and not SudoBot(msg) then 
 if database:get(bot_id.."lock:forward"..msg.chat_id_) == "del" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
 return false
@@ -3500,27 +3500,27 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dat
 send(msg.chat_id_, msg.id_,' *⌯︙بواسطه -›* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'SPXXXk')..') \n*⌯︙تـم فتح الملصقات* ')  
 end,nil)   
 end
-if text == 'قفل التوجيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+if text == 'قفل التوجيه' and SudoBot(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'del')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⌯︙بواسطه -›* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'SPXXXk')..') \n*⌯︙تـم قفـل التوجيه* ')  
 end,nil)   
-elseif text == 'قفل التوجيه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل التوجيه بالتقييد' and SudoBot(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⌯︙بواسطه -›* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'SPXXXk')..') \n*⌯︙تـم قفـل التوجيه بالتقييد* ')  
 end,nil)
-elseif text == 'قفل التوجيه بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل التوجيه بالكتم' and SudoBot(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⌯︙بواسطه -›* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'SPXXXk')..') \n*⌯︙تـم قفـل التوجيه بالكتم* ')  
 end,nil)   
-elseif text == 'قفل التوجيه بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'قفل التوجيه بالطرد' and SudoBot(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:forward"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⌯︙بواسطه -›* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'SPXXXk')..') \n*⌯︙تـم قفـل التوجيه بالطرد* ')  
 end,nil)   
-elseif text == 'فتح التوجيه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
+elseif text == 'فتح التوجيه' and SudoBot(msg) and msg.reply_to_message_id_ == 0 then 
 database:del(bot_id.."lock:forward"..msg.chat_id_)  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 send(msg.chat_id_, msg.id_,' *⌯︙بواسطه -›* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'SPXXXk')..') \n*⌯︙تـم فتح التوجيه* ')  
